@@ -25,6 +25,7 @@ interface IContext {
   setListSetData:Dispatch<SetStateAction<any[]>>;
   listSetData:any
   clearAll:()=>void
+  removeItem:(id:string)=>void
 }
 
 export const AllContext = createContext({} as IContext);
@@ -56,6 +57,7 @@ const GlobalContext = ({ children }: ContextProps) => {
   function clearAll():void{
     setAddCart([])
 }
+
 
   //increaseItem
   function increase(id: string) {
@@ -92,6 +94,12 @@ const GlobalContext = ({ children }: ContextProps) => {
     calculateTotal()
   }
 
+  function removeItem(id:string):void{
+    let remove= addCart.filter((item) => item.id !== id);
+     
+    setAddCart(remove)
+  }
+
 
   //Calculate total
   function calculateTotal(){
@@ -109,6 +117,7 @@ const GlobalContext = ({ children }: ContextProps) => {
     <AllContext.Provider
       value={{
         setTypeListData,
+        removeItem,
         clearAll,
         listSetData,
         setListSetData,

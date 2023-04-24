@@ -15,6 +15,7 @@ const AddtoCardUi = ({ addCart }: any) => {
     isTotalPrice,
     setAddCart,
     clearAll,
+    removeItem
   } = useGlobal();
 
   function PayNow() {
@@ -53,7 +54,9 @@ const AddtoCardUi = ({ addCart }: any) => {
                   increase={increase}
                   decrease={decrease}
                   amount={amount}
+                  removeItem={removeItem}
                   key={key}
+
                 />
               );
             })
