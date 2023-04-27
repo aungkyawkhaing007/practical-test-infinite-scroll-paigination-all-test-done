@@ -9,7 +9,7 @@ const AddtoCardUi = ({ addCart }: any) => {
     open,
     CloseCard,
     increase,
-    amount,
+
     decrease,
     isTotalCard,
     isTotalPrice,
@@ -53,7 +53,7 @@ const AddtoCardUi = ({ addCart }: any) => {
                   item={value}
                   increase={increase}
                   decrease={decrease}
-                  amount={amount}
+                 
                   removeItem={removeItem}
                   key={key}
 

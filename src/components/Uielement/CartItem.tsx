@@ -1,6 +1,6 @@
-import React from 'react'
-import ChevronDown from '../../assets/icons/ChevronDown'
-import ChevronUp from '../../assets/icons/ChevronUp'
+import React from 'react';
+import ChevronDown from '../../assets/icons/ChevronDown';
+import ChevronUp from '../../assets/icons/ChevronUp';
 
 const CartItem = ({item,increase,decrease,removeItem}:any) => {
   return (
@@ -16,7 +16,7 @@ const CartItem = ({item,increase,decrease,removeItem}:any) => {
           <span className="text-red-500 font-bold"> {item.set.total} </span>
           <span>cards left</span>
         </div>
-        <p onClick={removeItem} className='text-xs text-[#1040E2] cursor-pointer mt-1'>remove item</p>
+        <p onClick={()=>removeItem(item.id)} className='text-xs text-[#1040E2] cursor-pointer mt-1'>remove item</p>
       </div>
     </div>
     <div>

@@ -12,8 +12,7 @@ interface IContext {
   open: boolean;
   addCart: any[];
   setAddCart: Dispatch<SetStateAction<any[]>>;
-  amount: number;
-  setAmount: Dispatch<SetStateAction<number>>;
+
   increase: any;
   decrease: any;
   isTotalCard:number;
@@ -33,7 +32,6 @@ export const AllContext = createContext({} as IContext);
 const GlobalContext = ({ children }: ContextProps) => {
   const [cardList, setCardList] = useState([]);
   const [addCart, setAddCart] = useState([]);
-  const [amount, setAmount] = useState(1);
   const [open, setOpen] = useState(false);
   const [isTotalCard,setIsTotalCard] = useState(0);
   const [isTotalPrice,setIsTotalPrice] = useState(0);
@@ -56,8 +54,17 @@ const GlobalContext = ({ children }: ContextProps) => {
   
   function clearAll():void{
     setAddCart([])
+    calculateTotal()
 }
 
+
+function removeItem(id:string):void{
+  let remove= addCart.filter((item) => item.id !== id);
+   
+  setAddCart(remove)
+  calculateTotal()
+  
+}
 
   //increaseItem
   function increase(id: string) {
@@ -73,7 +80,7 @@ const GlobalContext = ({ children }: ContextProps) => {
 
     cartItemIncrease.perCard = cartItemIncrease.perCard + cartItemIncrease?.cardmarket?.prices?.averageSellPrice
     
-    setAmount(cartItemIncrease.number);
+    
 
     calculateTotal()
   }
@@ -90,15 +97,10 @@ const GlobalContext = ({ children }: ContextProps) => {
 
     cartItemDecrease.perCard = cartItemDecrease.perCard - cartItemDecrease?.cardmarket?.prices?.averageSellPrice
 
-    setAmount(cartItemDecrease.number);
+    
     calculateTotal()
   }
 
-  function removeItem(id:string):void{
-    let remove= addCart.filter((item) => item.id !== id);
-     
-    setAddCart(remove)
-  }
 
 
   //Calculate total
@@ -127,9 +129,9 @@ const GlobalContext = ({ children }: ContextProps) => {
         isTotalCard,
         isTotalPrice,
         increase,
-        amount,
+      
         decrease,
-        setAmount,
+        
         cardList,
         setCardList,
         CloseCard,

@@ -8,7 +8,7 @@ const CardListsUi = ({ item, action, addCart }: any) => {
           <img src={item?.images?.large} alt="" />
         </div>
         <p className="text-center text-[17px] font-bold mt-3">{item.name}</p>
-        <p className="text-[#0F6DB0] text-[13px] text-center">rarity</p>
+        <p className="text-[#0F6DB0] text-[13px] text-center">{item.rarity || "_"}</p>
         <div className="flex text-[#6d6d6d] text-sm mb-3 justify-center space-x-10">
           <p>$ {item?.cardmarket?.prices?.averageSellPrice}</p>
           <p>{item?.set?.total} Left</p>
